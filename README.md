@@ -6,27 +6,27 @@ Ensure you have installed in your local machine, the software required:
 
 ### PHP >= 8.4
 Execute this command in your terminal to install PHP 8.4:
-* `/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.4)"`
+* ```/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.4)"```
 
 ### Composer
 Follow these instructions to install `composer`:
-* `https://getcomposer.org/download/`
+* ```https://getcomposer.org/download/```
 
 ### Git
 Execute these commands in your terminal to install Git:
-* `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-* `brew install git`
+* ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
+* ```brew install git```
 
 ## Install the library in `Local`
 Requirements and steps to set up and install the library locally.
 
 ### 1. Download from GitHub
 Download the library by cloning from a GitHub repository (preferably using `SSH` mode), ie:
-* `git clone git@github.com:chemafernandez/plentific.git`
+* ```git clone git@github.com:chemafernandez/plentific.git```
 
 ### 2. Download PHP dependencies
 Execute this command in your terminal inside the directory `api-service`;
-* `composer update`
+* ```composer update```
 
 ## Classes
 
@@ -41,22 +41,22 @@ Execute this command in your terminal inside the directory `api-service`;
 
 ## Unit Tests
 This library is tested by PHPUnit class `UserServiceTest`, allocated in `tests` folder. To run the tests, execute this command in your terminal inside the directory `api-service`:
-* `vendor/bin/phpunit tests`
+* ```vendor/bin/phpunit tests```
 
 ## Examples of use
 There is a folder `api-service-consumer` with 3 scripts as examples of use of the library. Before running the examples, execute this command in your terminal inside the directory `api-service-consumer` to download the PHP dependencies:
-* `composer update`
+* ```composer update```
 
 ### Examples
 
 #### getUserById.php
 This script shows how to call function `getUserById`from the library. To run the example, execute this command inside the directory `api-service-consumer`:
-* `php getUserById.php`
+* ```php getUserById.php```
 
 #### getUsersListByPage.php
 This script shows how to call function `getUsersListByPage`from the library. To run the example, execute this command inside the directory `api-service-consumer`:
-* `php getUsersListByPage.php`
+* ```php getUsersListByPage.php```
 
 #### createUser.php
 This script shows how to call function `createUser`from the library. To run the example, execute this command inside the directory `api-service-consumer`:
-* `php createUser.php`
+* ```php createUser.php```
