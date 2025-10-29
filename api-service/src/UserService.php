@@ -6,6 +6,7 @@ use Chema\ApiService\DTOs\UserDTO;
 use Chema\ApiService\Exceptions\ApiException;
 use GuzzleHttp\Client;
 use Exception;
+use GuzzleHttp\Exception\RequestException;
 
 class UserService
 {
@@ -14,9 +15,9 @@ class UserService
 
     private Client $client;
 
-    public function __construct()
+    public function __construct(?Client $client = null)
     {
-        $this->client = new Client([
+        $this->client = $client ?? new Client([
             'base_uri' => rtrim(self::BASE_URL, '/') . '/',
             'headers' => [
                 'x-api-key'     => self::API_KEY,
@@ -35,9 +36,15 @@ class UserService
             $response = $this->client->get("users/{$id}");
             $data = json_decode($response->getBody()->getContents(), true);
             return UserDTO::fromArray($data['data']);
+        } catch (RequestException $e) {
+            throw new ApiException(
+                "Error fetching user with ID {$id}: " . $e->getMessage(), 
+                $e->getCode(), 
+                $e
+            );
         } catch (Exception $e) {
             throw new ApiException(
-                "Error fetching user with ID {$id}: " . $e->getMessage(),
+                "Unexpected error fetching user with ID {$id}: " . $e->getMessage(),
                 $e->getCode(),
                 $e
             );
@@ -52,13 +59,21 @@ class UserService
         try {
             $response = $this->client->get("users?page={$page}");
             $data = json_decode($response->getBody()->getContents(), true);
+            
+            $users = [];
             foreach ($data['data'] as $user) {
                 $users[] = UserDTO::fromArray($user);
             }
-            return $users ?? [];
+            return $users;
+        } catch (RequestException $e) {
+            throw new ApiException(
+                "Error fetching users list with page number {$page}: " . $e->getMessage(), 
+                $e->getCode(), 
+                $e
+            );
         } catch (Exception $e) {
             throw new ApiException(
-                "Error fetching users list with page number {$page}: " . $e->getMessage(),
+                "Unexpected error fetching users list with page number {$page}: " . $e->getMessage(),
                 $e->getCode(),
                 $e
             );
@@ -76,10 +91,15 @@ class UserService
             ]);
             $data = json_decode($response->getBody()->getContents(), true);
             return (int)$data['id'];
-            //return UserDTO::fromArray($data)->id;
+        } catch (RequestException $e) {
+            throw new ApiException(
+                "Error creating new user: " . $e->getMessage(), 
+                $e->getCode(), 
+                $e
+            );
         } catch (Exception $e) {
             throw new ApiException(
-                "Error creating new user: " . $e->getMessage(),
+                "Unexpected error creating new user: " . $e->getMessage(),
                 $e->getCode(),
                 $e
             );
