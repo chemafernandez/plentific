@@ -7,19 +7,27 @@
             "dist": {
                 "type": "path",
                 "url": "../api-service",
-                "reference": "9753ffd0e127ce77057fac1d29f8e2ed0d276cbf"
+                "reference": "ddda3b0f6569952b288006935311230ec693a2c6"
             },
             "require": {
-                "guzzlehttp/guzzle": "8.0.x-dev"
+                "guzzlehttp/guzzle": "8.0.x-dev",
+                "php": "^8.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^13.0@dev"
+                "phpstan/phpstan": "2.1.x-dev",
+                "phpunit/phpunit": "^13.0@dev",
+                "squizlabs/php_codesniffer": "4.x-dev"
             },
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Chema\\ApiService\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Chema\\ApiService\\Tests\\": "tests/"
                 }
             },
             "license": [

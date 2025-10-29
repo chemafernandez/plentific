@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "php": "^8.4",
         "chema/api-service": "*"
     }
 }
