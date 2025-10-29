@@ -19,12 +19,14 @@ class UserServiceTest extends TestCase
     private const VALID_PAGE = 1;
     private const INVALID_PAGE = 999;
 
-    //private UserService $service;
+    /*
+    private UserService $service;
 
     protected function setUp(): void
     {
-        //$this->service = new UserService();
+        $this->service = new UserService();
     }
+    */
 
     private function createMockClient(?Response $response = null, ?Exception $exception = null): Client
     {

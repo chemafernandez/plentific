@@ -5,7 +5,7 @@ This is a PHP library for interacting with the [Reqres API](https://reqres.in/),
 Ensure you have installed in your local machine, the software required:
 
 ### PHP >= 8.4
-Execute this command in your terminal to install PHP 8.4:
+Execute the following command in your terminal to install PHP 8.4:
 * `/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.4)"`
 
 ### Composer
@@ -13,7 +13,7 @@ Follow these instructions to install `composer`:
 * `https://getcomposer.org/download/`
 
 ### Git
-Execute these commands in your terminal to install Git:
+Execute the following commands in your terminal to install Git:
 * `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 * `brew install git`
 
@@ -25,7 +25,7 @@ Download the library by cloning from a GitHub repository (preferably using `SSH`
 * `git clone git@github.com:chemafernandez/plentific.git`
 
 ### 2. Download PHP dependencies
-Execute this command in your terminal inside the directory `api-service`;
+Execute the following command in your terminal from the `api-service` directory;
 * `composer update`
 
 ## Classes
@@ -40,31 +40,31 @@ Execute this command in your terminal inside the directory `api-service`;
 * All API errors are wrapped in the `ApiException` class.
 
 ## Unit Tests
-This library is tested by PHPUnit class `UserServiceTest`, allocated in `tests` folder. To run the tests, execute this command in your terminal inside the directory `api-service`:
+This library is tested by PHPUnit class `UserServiceTest`, allocated in `tests` folder. To run the tests, execute the following command in your terminal from the `api-service` directory:
 * `vendor/bin/phpunit tests`
 
 ## Examples of use
-There is a folder `api-service-consumer` with 3 scripts as examples of use of the library. Before running the examples, execute this command in your terminal inside the directory `api-service-consumer` to download the PHP dependencies:
+There is a folder `api-service-consumer` with 3 scripts as examples of use of the library. Before running the examples, execute the following command in your terminal from the `api-service-consumer` directory to download the PHP dependencies:
 * `composer update`
 
 ### Examples
 
 #### getUserById.php
-This script shows how to call function `getUserById`from the library. To run the example, execute this command inside the directory `api-service-consumer`:
+This script shows how to call function `getUserById` from the library. To run the example, execute the following command in your terminal from the `api-service-consumer` directory:
 * `php getUserById.php`
 
 #### getUsersListByPage.php
-This script shows how to call function `getUsersListByPage`from the library. To run the example, execute this command inside the directory `api-service-consumer`:
+This script shows how to call function `getUsersListByPage` from the library. To run the example, execute the following command in your terminal from the `api-service-consumer` directory:
 * `php getUsersListByPage.php`
 
 #### createUser.php
-This script shows how to call function `createUser`from the library. To run the example, execute this command inside the directory `api-service-consumer`:
+This script shows how to call function `createUser` from the library. To run the example, execute the following command in your terminal from the `api-service-consumer` directory:
 * `php createUser.php`
 
 ## PSR-12
-To ensure the library compliance with PSR-12 stadndards, `psr` library is installed. To run the PSR-12 validation, execute this command in your terminal inside the directory `api-service`:
+To ensure the library complies with PSR-12 standards, the `psr` library is installed. To run the PSR-12 validation, execute the following command in your terminal from the `api-service` directory:
 * `vendor/bin/phpcs`
 
 ## PHPStan
-PHPStan analys library is installed. To run the PHPStan analys, execute this command in your terminal inside the directory `api-service`:
+PHPStan analys library is installed. To run the PHPStan analys, execute the following command in your terminal from the `api-service` directory:
 * `vendor/bin/phpstan`
