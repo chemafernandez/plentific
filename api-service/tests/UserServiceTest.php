@@ -12,7 +12,7 @@ class UserServiceTest extends TestCase
     private const VALID_USER_ID = 1;
     private const INVALID_USER_ID = 999;
     private const VALID_PAGE = 1;
-    private const INVALID_PAGE = 3;
+    private const INVALID_PAGE = 999;
 
     private UserService $service;
 
@@ -37,7 +37,7 @@ class UserServiceTest extends TestCase
     public function testGetUserByIdInvalidId(): void
     {
         $this->expectException(ApiException::class);
-        $user = $this->service->getUserById(self::INVALID_USER_ID);
+        $this->service->getUserById(self::INVALID_USER_ID);
     }
 
     /**
