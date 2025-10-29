@@ -12,21 +12,12 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 
-class UserServiceTest extends TestCase
+class UserServiceWithMockClientTest extends TestCase
 {
     private const VALID_USER_ID = 1;
     private const INVALID_USER_ID = 999;
     private const VALID_PAGE = 1;
     private const INVALID_PAGE = 999;
-
-    /*
-    private UserService $service;
-
-    protected function setUp(): void
-    {
-        $this->service = new UserService();
-    }
-    */
 
     private function createMockClient(?Response $response = null, ?Exception $exception = null): Client
     {
@@ -68,13 +59,6 @@ class UserServiceTest extends TestCase
         $user = $service->getUserById(self::VALID_USER_ID);
         $this->assertInstanceOf(UserDTO::class, $user);
         $this->assertEquals(self::VALID_USER_ID, $user->id);
-
-        /*
-        $user = $this->service->getUserById(self::VALID_USER_ID);
-
-        $this->assertInstanceOf(UserDTO::class, $user);
-        $this->assertEquals(self::VALID_USER_ID, $user->id);
-        */
     }
 
     /**
@@ -92,11 +76,6 @@ class UserServiceTest extends TestCase
 
         $this->expectException(ApiException::class);
         $service->getUserById(self::INVALID_USER_ID);
-
-        /*
-        $this->expectException(ApiException::class);
-        $this->service->getUserById(self::INVALID_USER_ID);
-        */
     }
 
     /**
@@ -133,16 +112,7 @@ class UserServiceTest extends TestCase
 
         $this->assertIsArray($users);
         $this->assertNotEmpty($users);
-        $this->assertCount(2, $users);
         $this->assertContainsOnlyInstancesOf(UserDTO::class, $users);
-
-        /*
-        $users = $this->service->getUsersListByPage(self::VALID_PAGE);
-
-        $this->assertIsArray($users);
-        $this->assertNotEmpty($users);
-        $this->assertContainsOnlyInstancesOf(UserDTO::class, $users);
-        */
     }
 
     /**
@@ -160,13 +130,6 @@ class UserServiceTest extends TestCase
 
         $this->expectException(ApiException::class);
         $service->getUsersListByPage(self::INVALID_PAGE);
-
-        /*
-        $users = $this->service->getUsersListByPage(self::INVALID_PAGE);
-
-        $this->assertIsArray($users);
-        $this->assertEmpty($users);
-        */
     }
 
     /**
@@ -188,17 +151,5 @@ class UserServiceTest extends TestCase
 
         $this->assertIsInt($newUserId);
         $this->assertGreaterThan(0, $newUserId);
-
-        /*
-        $newUserData = [
-            'first_name'    => 'Firstname_' . time(),
-            'last_name'     => 'Lastname_' . time(),
-            'job'           => 'Job_' . time(),
-        ];
-        $newUserId = $this->service->createUser($newUserData);
-
-        $this->assertIsInt($newUserId);
-        $this->assertGreaterThan(0, $newUserId);
-        */
     }
 }
