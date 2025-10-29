@@ -38,8 +38,8 @@ class UserService
             return UserDTO::fromArray($data['data']);
         } catch (RequestException $e) {
             throw new ApiException(
-                "Error fetching user with ID {$id}: " . $e->getMessage(), 
-                $e->getCode(), 
+                "Error fetching user with ID {$id}: " . $e->getMessage(),
+                $e->getCode(),
                 $e
             );
         } catch (Exception $e) {
@@ -59,7 +59,7 @@ class UserService
         try {
             $response = $this->client->get("users?page={$page}");
             $data = json_decode($response->getBody()->getContents(), true);
-            
+
             $users = [];
             foreach ($data['data'] as $user) {
                 $users[] = UserDTO::fromArray($user);
@@ -67,8 +67,8 @@ class UserService
             return $users;
         } catch (RequestException $e) {
             throw new ApiException(
-                "Error fetching users list with page number {$page}: " . $e->getMessage(), 
-                $e->getCode(), 
+                "Error fetching users list with page number {$page}: " . $e->getMessage(),
+                $e->getCode(),
                 $e
             );
         } catch (Exception $e) {
@@ -93,8 +93,8 @@ class UserService
             return (int)$data['id'];
         } catch (RequestException $e) {
             throw new ApiException(
-                "Error creating new user: " . $e->getMessage(), 
-                $e->getCode(), 
+                "Error creating new user: " . $e->getMessage(),
+                $e->getCode(),
                 $e
             );
         } catch (Exception $e) {
