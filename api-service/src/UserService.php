@@ -37,9 +37,9 @@ class UserService
             return UserDTO::fromArray($data['data']);
         } catch (Exception $e) {
             throw new ApiException(
-                message: "Error fetching user with ID {$id}: " . $e->getMessage(),
-                code: $e->getCode(),
-                previous: $e
+                "Error fetching user with ID {$id}: " . $e->getMessage(),
+                $e->getCode(),
+                $e
             );
         }
     }
@@ -58,9 +58,9 @@ class UserService
             return $users ?? [];
         } catch (Exception $e) {
             throw new ApiException(
-                message: "Error fetching users list with page number {$page}: " . $e->getMessage(),
-                code: $e->getCode(),
-                previous: $e
+                "Error fetching users list with page number {$page}: " . $e->getMessage(),
+                $e->getCode(),
+                $e
             );
         }
     }
@@ -75,12 +75,13 @@ class UserService
                 'json' => $userData,
             ]);
             $data = json_decode($response->getBody()->getContents(), true);
-            return UserDTO::fromArray($data)->id;
+            return (int)$data['id'];
+            //return UserDTO::fromArray($data)->id;
         } catch (Exception $e) {
             throw new ApiException(
-                message: "Error creating new user: " . $e->getMessage(),
-                code: $e->getCode(),
-                previous: $e
+                "Error creating new user: " . $e->getMessage(),
+                $e->getCode(),
+                $e
             );
         }
     }
