@@ -28,13 +28,12 @@ Download the library by cloning from a GitHub repository (preferably using `SSH`
 Execute this command in your terminal inside the directory `api-service`;
 * `composer update`
 
-## Usage
+## Classes
 
-### Classes
 * `UserService` is the main class which provides methods to interact with the API.
-** `getUserById`: Fetch a user by ID
-** `getUsersListByPage`: Get a list of users by page
-** `createUser`: Create a new user
+  - `getUserById`: Fetch a user by ID
+  - `getUsersListByPage`: Get a list of users by page
+  - `createUser`: Create a new user
 
 * `UserDTO` class is a Data Transfer Object representing a user.
 
