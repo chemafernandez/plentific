@@ -49,9 +49,7 @@ class UserServiceTest extends TestCase
 
         $this->assertIsArray($users);
         $this->assertNotEmpty($users);
-        foreach ($users as $user) {
-            $this->assertInstanceOf(UserDTO::class, $user);
-        }
+        $this->assertContainsOnlyInstancesOf(UserDTO::class, $users);
     }
 
     /**
