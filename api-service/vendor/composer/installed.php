@@ -89,7 +89,7 @@
         'phpstan/phpstan' => array(
             'pretty_version' => '2.1.x-dev',
             'version' => '2.1.9999999.9999999-dev',
-            'reference' => '6c02f36b3b6af01f205459579d47594736a9958f',
+            'reference' => '8d3748ad149f125c88d2b1b46723f6109d93adc6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpstan/phpstan',
             'aliases' => array(),
