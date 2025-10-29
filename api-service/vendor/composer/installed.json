@@ -590,8 +590,8 @@
             "version_normalized": "2.1.9999999.9999999-dev",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8d3748ad149f125c88d2b1b46723f6109d93adc6",
-                "reference": "8d3748ad149f125c88d2b1b46723f6109d93adc6",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/95d3e900beb3b2ceee5dc3f0c5406347814fa032",
+                "reference": "95d3e900beb3b2ceee5dc3f0c5406347814fa032",
                 "shasum": ""
             },
             "require": {
@@ -600,7 +600,7 @@
             "conflict": {
                 "phpstan/phpstan-shim": "*"
             },
-            "time": "2025-10-29T08:56:19+00:00",
+            "time": "2025-10-29T13:00:25+00:00",
             "default-branch": true,
             "bin": [
                 "phpstan",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8a756493794a36109fd1f37c9fa63d2",
+    "content-hash": "cd35e5a7e68bd664f66040f0c13f756a",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -854,8 +854,8 @@
             "version": "2.1.x-dev",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8d3748ad149f125c88d2b1b46723f6109d93adc6",
-                "reference": "8d3748ad149f125c88d2b1b46723f6109d93adc6",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/95d3e900beb3b2ceee5dc3f0c5406347814fa032",
+                "reference": "95d3e900beb3b2ceee5dc3f0c5406347814fa032",
                 "shasum": ""
             },
             "require": {
@@ -901,7 +901,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-29T08:56:19+00:00"
+            "time": "2025-10-29T13:00:25+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2571,7 +2571,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
+    "platform": {
+        "php": "^8.4"
+    },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

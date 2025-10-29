@@ -28,10 +28,5 @@
         "phpunit/phpunit": "^13.0@dev",
         "squizlabs/php_codesniffer": "4.x-dev",
         "phpstan/phpstan": "2.1.x-dev"
-    },
-    "config": {
-        "platform": {
-            "php": "8.4.0"
-        }
     }
 }
