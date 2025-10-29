@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset name="PSR12 standard">
+    <description>Ensure all code follows PSR-12.</description>
+
+    <!-- Define the coding standard -->
+    <rule ref="PSR12"/>
+
+    <!-- Include all source files -->
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- Optional: exclude vendor or generated folders -->
+    <exclude-pattern>vendor/</exclude-pattern>
+</ruleset>
