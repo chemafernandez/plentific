@@ -3,10 +3,9 @@
 namespace Chema\ApiService;
 
 use Chema\ApiService\DTOs\UserDTO;
+use Chema\ApiService\Exceptions\ApiException;
 use GuzzleHttp\Client;
 use Exception;
-
-use function PHPUnit\Framework\isInt;
 
 class UserService
 {
@@ -37,7 +36,11 @@ class UserService
             $data = json_decode($response->getBody()->getContents(), true);
             return UserDTO::fromArray($data['data']);
         } catch (Exception $e) {
-            throw $e;
+            throw new ApiException(
+                message: "Error fetching user with ID {$id}: " . $e->getMessage(),
+                code: $e->getCode(),
+                previous: $e
+            );
         }
     }
 
@@ -46,16 +49,19 @@ class UserService
      */
     public function getUsersListByPage(int $page = 1): array
     {
-        $users = [];
         try {
             $response = $this->client->get("users?page={$page}");
             $data = json_decode($response->getBody()->getContents(), true);
             foreach ($data['data'] as $user) {
                 $users[] = UserDTO::fromArray($user);
             }
-            return $users;
+            return $users ?? [];
         } catch (Exception $e) {
-            throw $e;
+            throw new ApiException(
+                message: "Error fetching users list with page number {$page}: " . $e->getMessage(),
+                code: $e->getCode(),
+                previous: $e
+            );
         }
     }
 
@@ -71,7 +77,11 @@ class UserService
             $data = json_decode($response->getBody()->getContents(), true);
             return UserDTO::fromArray($data)->id;
         } catch (Exception $e) {
-            throw $e;
+            throw new ApiException(
+                message: "Error creating new user: " . $e->getMessage(),
+                code: $e->getCode(),
+                previous: $e
+            );
         }
     }
 }

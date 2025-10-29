@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Chema\ApiService\Exceptions\ApiException;
 use Chema\ApiService\UserService;
 
 $userData = [
@@ -9,11 +10,12 @@ $userData = [
 	'job'			=> 'Senior Developer',
 ];
 
+$service = new UserService();
+
 try {
-	$service = new UserService();
 	$userId = $service->createUser($userData);
 	print_r($userId);
-} catch (Exception $e) {
+} catch (ApiException $e) {
 	echo $e->getMessage();
 }
 ?>

@@ -3,9 +3,9 @@
 namespace Chema\ApiUserService\Tests;
 
 use Chema\ApiService\DTOs\UserDTO;
+use Chema\ApiService\Exceptions\ApiException;
 use PHPUnit\Framework\TestCase;
 use Chema\ApiService\UserService;
-use Exception;
 
 class UserServiceTest extends TestCase
 {
@@ -29,7 +29,7 @@ class UserServiceTest extends TestCase
 
         // Test invalid ID - Throws an Exception
         $userId = 0;
-        $this->expectException(Exception::class);
+        $this->expectException(ApiException::class);
         $user = $this->service->getUserById($userId);
     }
 
