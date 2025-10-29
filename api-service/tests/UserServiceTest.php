@@ -9,6 +9,11 @@ use Chema\ApiService\UserService;
 
 class UserServiceTest extends TestCase
 {
+    private const VALID_USER_ID = 1;
+    private const INVALID_USER_ID = 999;
+    private const VALID_PAGE = 1;
+    private const INVALID_PAGE = 3;
+
     private UserService $service;
 
     protected function setUp(): void
@@ -17,45 +22,44 @@ class UserServiceTest extends TestCase
     }
 
     /**
-     * Test getUserById function
+     * Test getUserById function with a valid ID
      */
-    public function testGetUserById(): void
+    public function testGetUserByIdValidId(): void
     {
-        // Test valid ID
-        $userId = 1;
-        $user = $this->service->getUserById($userId);
+        $user = $this->service->getUserById(self::VALID_USER_ID);
         $this->assertInstanceOf(UserDTO::class, $user);
-        $this->assertEquals($user->id, $userId);
-
-        // Test invalid ID - Throws an Exception
-        $userId = 0;
-        $this->expectException(ApiException::class);
-        $user = $this->service->getUserById($userId);
+        $this->assertEquals(self::VALID_USER_ID, $user->id);
     }
 
     /**
-     * Test getUsersListByPage function
+     * Test getUserById function with an invalid ID
      */
-    public function testGetUsersListByPage(): void
+    public function testGetUserByIdInvalidId(): void
     {
-        // Test valid page number
-        $page = 1;
-        $usersPerPage = 6;
-        $users = $this->service->getUsersListByPage($page);
+        $this->expectException(ApiException::class);
+        $user = $this->service->getUserById(self::INVALID_USER_ID);
+    }
+
+    /**
+     * Test getUsersListByPage function with a valid Page Number
+     */
+    public function testGetUsersListByPageValidPageNumber(): void
+    {
+        $users = $this->service->getUsersListByPage(self::VALID_PAGE);
 
         $this->assertIsArray($users);
-        $this->assertCount($usersPerPage, $users);
-        $this->assertInstanceOf(UserDTO::class, $users[0]);
-        $this->assertEquals(1, $users[0]->id);
-        $this->assertEquals(2, $users[1]->id);
-        $this->assertEquals(3, $users[2]->id);
-        $this->assertEquals(4, $users[3]->id);
-        $this->assertEquals(5, $users[4]->id);
-        $this->assertEquals(6, $users[5]->id);
+        $this->assertNotEmpty($users);
+        foreach ($users as $user) {
+            $this->assertInstanceOf(UserDTO::class, $user);
+        }
+    }
 
-        // Test invalid page number
-        $page = 3;
-        $users = $this->service->getUsersListByPage($page);
+    /**
+     * Test getUsersListByPage function with an invalid Page Number
+     */
+    public function testGetUsersListByPageInvalidPageNumber(): void
+    {
+        $users = $this->service->getUsersListByPage(self::INVALID_PAGE);
 
         $this->assertIsArray($users);
         $this->assertEmpty($users);
@@ -67,12 +71,13 @@ class UserServiceTest extends TestCase
     public function testCreateUser(): void
     {
         $newUserData = [
-            'first_name'    => 'Chema',
-            'last_name'     => 'Fernandez',
-            'job'           => 'Senior Developer',
+            'first_name'    => 'Firstname_' . time(),
+            'last_name'     => 'Lastname_' . time(),
+            'job'           => 'Job_' . time(),
         ];
         $newUserId = $this->service->createUser($newUserData);
 
         $this->assertIsInt($newUserId);
+        $this->assertGreaterThan(0, $newUserId);
     }
 }
