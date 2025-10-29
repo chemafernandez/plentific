@@ -44,11 +44,8 @@ Execute this command in your terminal inside the directory `api-service`;
 This library is tested by PHPUnit class `UserServiceTest`, allocated in `tests` folder. To run the tests, execute this command in your terminal inside the directory `api-service`:
 * `vendor/bin/phpunit tests`
 
-
 ## Examples of use
-There is a folder `api-service-consumer` with 3 scripts as examples of use of the library.
-
-Note: before running the examples, execute this command in your terminal inside the directory `api-service-consumer` to download the PHP dependencies:
+There is a folder `api-service-consumer` with 3 scripts as examples of use of the library. Before running the examples, execute this command in your terminal inside the directory `api-service-consumer` to download the PHP dependencies:
 * `composer update`
 
 ### Examples
