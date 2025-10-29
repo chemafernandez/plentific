@@ -35,7 +35,8 @@ class UserService
         try {
             $response = $this->client->get("users/{$id}");
             $data = json_decode($response->getBody()->getContents(), true);
-            return UserDTO::fromArray($data['data']);
+
+            return UserDTO::fromArray($data['data'] ?? []);
         } catch (RequestException $e) {
             throw new ApiException(
                 "Error fetching user with ID {$id}: " . $e->getMessage(),
@@ -90,6 +91,7 @@ class UserService
                 'json' => $userData,
             ]);
             $data = json_decode($response->getBody()->getContents(), true);
+
             return (int)$data['id'];
         } catch (RequestException $e) {
             throw new ApiException(
