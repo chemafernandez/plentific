@@ -40,7 +40,7 @@ Execute the following command in your terminal from the `api-service` directory;
 * All API errors are wrapped in the `ApiException` class.
 
 ## Unit Tests
-This library is tested by PHPUnit class `UserServiceTest`, allocated in `tests` folder. To run the tests, execute the following command in your terminal from the `api-service` directory:
+This library is tested by PHPUnit classes `UserServiceWithMockClientTest` and `UserServiceWithRealClientTest`, allocated in `tests` folder. To run the tests, execute the following command in your terminal from the `api-service` directory:
 * `vendor/bin/phpunit tests`
 
 ## Examples of use
