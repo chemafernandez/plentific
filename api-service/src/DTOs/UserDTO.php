@@ -18,6 +18,8 @@ class UserDTO implements JsonSerializable
 
     /**
      * Convert DTO to an array
+     * 
+     * @return array<string, int|string|null>
      */
     public function toArray(): array
     {
@@ -33,6 +35,8 @@ class UserDTO implements JsonSerializable
 
     /**
      * Serialise DTO to JSON
+     * 
+     * @return array<string, int|string|null>
      */
     public function jsonSerialize(): array
     {
@@ -41,6 +45,8 @@ class UserDTO implements JsonSerializable
 
     /**
      * Create a DTO from an array
+     * 
+     * @param array<string, int|string|null> $data
      */
     public static function fromArray(array $data): self
     {

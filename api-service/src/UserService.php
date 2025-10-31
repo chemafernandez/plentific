@@ -54,6 +54,8 @@ class UserService
 
     /**
      * Retrieve a list of users per page
+     * 
+     * @return array<int, UserDTO>
      */
     public function getUsersListByPage(int $page = 1): array
     {
@@ -83,6 +85,9 @@ class UserService
 
     /**
      * Create an user and return the new User ID
+     * 
+     * @param array<string, mixed> $userData
+     * @return int
      */
     public function createUser(array $userData): int
     {
